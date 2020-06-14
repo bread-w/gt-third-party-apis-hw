@@ -27,16 +27,16 @@ $(document).ready(function () {
     "2400",
   ];
 
-//   for (var i = 0; i < arrayOfHours.length; i++) {
-//     console.log(arrayOfHours[i]);
-//     var hourList = arrayOfHours[i];
-//     var timeTableRows = $("<div class='row form-group hour-rows'>");
-//     var hourEl = $("<div class='col-sm-1'>");
-//     var textEl = $("<textarea class='col-sm-10 time-sensitive form-control'>");
-//     var saveEl = $("<button type='button' class='col-sm-1 btn btn-info i fas fa-lock'>");
-//     hourEl.text(hourList);
-//     timeTableRows.append(hourEl).append(textEl).append(saveEl);
-//     $(".container").append(timeTableRows);
-//   }
+  for (var i = 0; i < arrayOfHours.length; i++) {
+    console.log(arrayOfHours[i]);
+    var hourList = arrayOfHours[i];
+    var timeTableRows = $("<div class='row form-group hour-rows'>");
+    var hourEl = $("<div class='col-sm-1'>");
+    var textEl = $("<textarea class='col-sm-10 time-sensitive form-control'>");
+    var saveEl = $("<button type='button' class='col-sm-1 btn btn-info i fas fa-lock'>");
+    hourEl.text(hourList);
+    timeTableRows.append(hourEl).append(textEl).append(saveEl);
+    $(".container").append(timeTableRows);
+  }
 
 });
