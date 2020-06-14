@@ -37,6 +37,10 @@ $(document).ready(function () {
     hourEl.text(hourList);
     timeTableRows.append(hourEl).append(textEl).append(saveEl);
     $(".container").append(timeTableRows);
-  }
+  };
+
+  var todaysDate = moment().format("dddd MMMM Do, YYYY");
+  console.log(todaysDate);
+  $("#currentDay").text(todaysDate);
 
 });
