@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  var schedulerEl = [
+  var scheduler = [
     "9 AM",
     "10 AM",
     "11 AM",
@@ -11,20 +11,24 @@ $(document).ready(function () {
     "5 PM",
   ];
 
+  var todoList = [];
+
   var currentTime = moment().format("h A");
 
-  for (var i = 0; i < schedulerEl.length; i++) {
-    console.log(schedulerEl[i]);
-    var agenda = schedulerEl[i];
-    var timeTableRows = $("<div class='row form-group hour-rows'>");
+  for (var i = 0; i < scheduler.length; i++) {
+    console.log(scheduler[i]);
+    var agendaEl = scheduler[i];
+    var dailyScheduleEl = $("<div class='row form-group hour-rows'>");
     var timeBlockEl = $("<div class='col-sm-1'>");
-    var inputEl = $("<textarea class='col-sm-10 time-sensitive form-control'>");
-    var lockEl = $(
-      "<button type='button' class='col-sm-1 btn btn-info i fas fa-lock'>"
+    var inputEl = $(
+      "<textarea class='col-sm-10 form-control' id='todo-storage'>"
     );
-    timeBlockEl.text(agenda);
-    timeTableRows.append(timeBlockEl).append(inputEl).append(lockEl);
-    $(".container").append(timeTableRows);
+    var submitEl = $(
+      "<button type='button' class='col-sm-1 btn btn-primary i fas fa-lock'>"
+    );
+    timeBlockEl.text(agendaEl);
+    dailyScheduleEl.append(timeBlockEl).append(inputEl).append(submitEl);
+    $(".container").append(dailyScheduleEl);
   }
 
   var todaysDate = moment().format("dddd MMMM Do, YYYY");
@@ -33,5 +37,13 @@ $(document).ready(function () {
 
   $(".btn").on("click", function () {
     console.log("You clicked my button!");
+  });
+
+  $("#todo-storage").on("click", function (event) {
+    var setTodo = $("#todo-storage").val();
+    event.preventDefault();
+    if (todoList.length > 0) {
+      console.log("You submitted the form.");
+    }
   });
 });
