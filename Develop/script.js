@@ -1,5 +1,4 @@
 $(document).ready(function () {
-
   var arrayOfHours = [
     "9 AM",
     "10 AM",
@@ -11,6 +10,8 @@ $(document).ready(function () {
     "4 PM",
     "5 PM",
   ];
+
+  var currentTime = moment().format("h A");
 
   for (var i = 0; i < arrayOfHours.length; i++) {
     console.log(arrayOfHours[i]);
@@ -24,17 +25,21 @@ $(document).ready(function () {
     hourEl.text(hourList);
     timeTableRows.append(hourEl).append(textEl).append(saveEl);
     $(".container").append(timeTableRows);
+
+    // if (moment(arrayOfHours[i]).isSame(currentTime) === true) {
+    //     $(".time-sensitive").attr("style", "background-color: red");
+    //   }
+    // var blockTime = arrayOfHours[i];
+    // if (blockTime.match(currentTime)) {
+    //   $(".time-sensitive").attr("style", "background-color: red");
+    // }
   }
-
-//   if (moment().isSame() === currentTime) {
-//     $(".time-sensitive").attr("style", "background-color: red");
-//   }
-
-var currentTime = moment().format("hA");
-console.log(currentTime);
 
   var todaysDate = moment().format("dddd MMMM Do, YYYY");
   console.log(todaysDate);
   $("#currentDay").text(todaysDate);
 
+  $(".btn").on("click", function () {
+    console.log("You clicked my button!");
+  });
 });
