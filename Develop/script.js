@@ -18,17 +18,23 @@ $(document).ready(function () {
   for (var i = 0; i < scheduler.length; i++) {
     console.log(scheduler[i]);
     var agendaEl = scheduler[i];
-    var dailyScheduleEl = $("<div class='row form-group'>");
-    var timeBlockEl = $("<div class='col-sm-1'>");
-    var inputEl = $(
-      "<textarea class='col-sm-10 form-control todo-storage'>"
-    );
+    var dailyScheduleEl = $("<div class='row form-group timeblock-storage'>");
+    var timeBlockEl = $("<div class='col-sm-1 hour'>");
+    var inputEl = $("<textarea class='col-sm-10 form-control todo-storage'>");
     var submitEl = $(
-      "<button type='button' class='col-sm-1 btn btn-primary i fas fa-lock store-todo'>"
+      "<button type='button' class='col-sm-1 btn btn-primary saveBtn i fas fa-lock store-todo'>"
     );
     timeBlockEl.text(agendaEl);
     dailyScheduleEl.append(timeBlockEl).append(inputEl).append(submitEl);
     $(".container").append(dailyScheduleEl);
+
+    if (agendaEl.match(currentTime)) {
+      $(inputEl).addClass("present");
+    } else if (agendaEl < currentTime) {
+      $(inputEl).addClass("past");
+    } else {
+      $(inputEl).addClass("future");
+    }
   }
 
   var todaysDate = moment().format("dddd MMMM Do, YYYY");
@@ -42,11 +48,10 @@ $(document).ready(function () {
   $(".store-todo").on("click", function (event) {
     var setTodo = $(".todo-storage").val();
     todoList.push(setTodo);
-    console.log(todoList[i]);
+    console.log(todoList);
     event.preventDefault();
     if (todoList.length > 0) {
       console.log("You submitted the form.");
-
     }
   });
 });
