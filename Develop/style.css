@@ -13,6 +13,10 @@ textarea{
   padding: 10px;
 }
 
+.form-group {
+  margin-bottom: 0;
+}
+
 .jumbotron {
   text-align: center;
   background-color: transparent;
@@ -33,13 +37,15 @@ textarea{
 .row {
   white-space: pre-wrap;
   height: 80px;
-  border-top: 1px solid white;;
+  border-top: 1px solid white;
 }
 
 .hour {
   background-color: #ffffff;
   color: #000000;
   border-top: 1px dashed #000000;
+  padding-top: 20px;
+  text-align: right;
 }
 
 .past {
