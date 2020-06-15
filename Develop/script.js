@@ -1,4 +1,5 @@
 $(document).ready(function () {
+  // Hour Block Array
   var scheduler = [
     "9AM",
     "10AM",
@@ -11,12 +12,15 @@ $(document).ready(function () {
     "5PM",
   ];
 
+  // Empty array to store hourly toDos
   var todoList = [];
 
+// Current time as shown below ex. 9AM
   var currentTime = moment().format("hA");
+  // Look into the scheduler and match current time to the value within the array
   var currentTimeIndex = scheduler.indexOf(currentTime);
   console.log(currentTimeIndex);
-
+// for loop to populate buttons, and assign ids to use in current storage later on.
   for (var i = 0; i < scheduler.length; i++) {
     console.log(scheduler[i]);
     var agendaEl = scheduler[i];
@@ -34,6 +38,10 @@ $(document).ready(function () {
     dailyScheduleEl.append(timeBlockEl).append(inputEl).append(submitEl);
     $(".container").append(dailyScheduleEl);
 
+    // conditional so that if current time matches the index item it shows as present
+    // if the current time is greater than i, show past (also put in if equal to -1)
+    // otherwise show as future
+
     if (i === currentTimeIndex) {
       $(inputEl).addClass("present");
     } else if (i < currentTimeIndex || currentTimeIndex === -1) {
@@ -43,6 +51,7 @@ $(document).ready(function () {
     }
   }
 
+  // shows todays date
   var todaysDate = moment().format("dddd MMMM Do, YYYY");
   console.log(todaysDate);
   $("#currentDay").text(todaysDate);
@@ -50,6 +59,8 @@ $(document).ready(function () {
   $(".btn").on("click", function () {
     console.log("You clicked my button!");
   });
+
+  // on button push, store the input
 
   $(".store-todo").on("click", function (event) {
     event.preventDefault();
