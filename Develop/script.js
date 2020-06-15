@@ -14,6 +14,7 @@ $(document).ready(function () {
   var todoList = [];
 
   var currentTime = moment().hour();
+  console.log(currentTime);
 
   for (var i = 0; i < scheduler.length; i++) {
     console.log(scheduler[i]);
