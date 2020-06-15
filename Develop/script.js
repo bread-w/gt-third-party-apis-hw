@@ -1,19 +1,19 @@
 $(document).ready(function () {
   var scheduler = [
-    "9 AM",
-    "10 AM",
-    "11 AM",
-    "12 PM",
-    "1 PM",
-    "2 PM",
-    "3 PM",
-    "4 PM",
-    "5 PM",
+    "9AM",
+    "10AM",
+    "11AM",
+    "12PM",
+    "1PM",
+    "2PM",
+    "3PM",
+    "4PM",
+    "5PM",
   ];
 
   var todoList = [];
 
-  var currentTime = moment().format("h A");
+  var currentTime = moment().format("hA");
   var currentTimeIndex = scheduler.indexOf(currentTime);
   console.log(currentTimeIndex);
 
@@ -22,28 +22,21 @@ $(document).ready(function () {
     var agendaEl = scheduler[i];
     var dailyScheduleEl = $("<div class='row form-group timeblock-storage'>");
     var timeBlockEl = $("<div class='col-sm-1 hour'>");
-    var inputEl = $("<textarea class='col-sm-10 form-control description todo-storage'>");
+    var inputEl = $("<textarea class='col-sm-10 form-control description time-block todo-storage'>");
     var submitEl = $(
       "<button type='button' class='col-sm-1 btn btn-primary saveBtn i:hover fas fa-lock store-todo'>"
     );
 
+    console.log(i);
+
     timeBlockEl.text(agendaEl);
-    inputEl.attr("id", agendaEl.replace(" ", ""));
+    inputEl.attr("id", agendaEl);
     dailyScheduleEl.append(timeBlockEl).append(inputEl).append(submitEl);
     $(".container").append(dailyScheduleEl);
 
-    // var timeBlockColor = agendaEl
-    // if (agendaEl.match(currentTime)) {
-    //   $(inputEl).addClass("present");
-    // } else if (agendaEl < currentTime) {
-    //   $(inputEl).addClass("past");
-    // } else {
-    //   $(inputEl).addClass("future");
-    // }
-
     if (i === currentTimeIndex) {
       $(inputEl).addClass("present");
-    } else if (i < currentTimeIndex) {
+    } else if (i < currentTimeIndex || currentTimeIndex === -1) {
       $(inputEl).addClass("past");
     } else {
       $(inputEl).addClass("future");
